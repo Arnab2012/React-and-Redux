@@ -21,7 +21,7 @@ function App() {
         {foodItems.length==0 && <h3>There is no Food Items</h3>}
         {/* with using map */}
         {foodItems.map((item) => (
-          <li class="list-group-item">{item}</li>
+          <li key={item} className="list-group-item">{item}</li>
         ))}
       </ul>
     </>
