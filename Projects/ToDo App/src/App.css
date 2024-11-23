@@ -1,22 +1,8 @@
-h1{
-    font-weight: 600;
-    font-size: 40px;
-    margin: 10px;
-    margin-bottom: 25px;
-}
-
-input{
-    width: 100%;
-}
-
 .myRow{
     margin: 10px 5px;
 }
-.itemContainer{
-    text-align: left;
-}
 .btn-success{
-    margin-right: 20px;
+    margin-right: 85px;
 }
 .myButton{
     min-width: 75px;
