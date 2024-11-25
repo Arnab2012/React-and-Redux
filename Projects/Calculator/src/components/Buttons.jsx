@@ -1,10 +1,10 @@
 import styles from "./Buttons.module.css";
 
-function Buttons({buttons}) {
+function Buttons({buttons,onButtonClick}) {
   return (
     <div className={styles.buttonContainer}>
       {buttons.map((button) => (
-        <button className={styles.myButton}>{button}</button>
+        <button key={button} className={styles.myButton} onClick={()=>onButtonClick(button)}>{button}</button>
       ))}
     </div>
   );
