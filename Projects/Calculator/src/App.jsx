@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import styles from './App.module.css'
-import Buttons from './components/Buttons'
-import Display from './components/Display'
+import { useState } from "react";
+import styles from "./App.module.css";
+import Buttons from "./components/Buttons";
+import Display from "./components/Display";
 
 function App() {
   let buttons = [
@@ -25,25 +25,23 @@ function App() {
   ];
 
   // for adding the values in display
-  let [value,setValue]=useState();
+  let [value, setValue] = useState();
 
-  let onButtonClick=(button)=>{
-    if(button==='='){
+  let onButtonClick = (button) => {
+    if (button === "=") {
       setValue(eval(value));
-    }
-    else if(button==='C'){
-      setValue('');
-    }
-    else{
+    } else if (button === "C") {
+      setValue("");
+    } else {
       setValue((prevValue) => prevValue + button);
     }
-  }
+  };
   return (
     <center className={styles.calculator}>
       <Display value={value}></Display>
       <Buttons buttons={buttons} onButtonClick={onButtonClick}></Buttons>
     </center>
-  )
+  );
 }
 
-export default App
+export default App;
