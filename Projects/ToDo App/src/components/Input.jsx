@@ -1,29 +1,41 @@
 import { useState } from "react";
 import styles from "./Input.module.css";
 import { MdAddCircle } from "react-icons/md";
+import { useRef } from "react";
 
 function Input({ onAddButtonClick }) {
   // here the two useState will track the todoName and todoDate entered by the user
-  let [todoName, setTodoName] = useState("");
-  let [todoDate, setTodoDate] = useState("");
+  // let [todoName, setTodoName] = useState("");
+  // let [todoDate, setTodoDate] = useState("");
+
+  // using useRef instead of useState
+  let todoName=useRef("");
+  let todoDate=useRef("");
 
   // handling functions
-  let handletodoName = (e) => {
-    setTodoName(e.target.value);
-  };
-  let handletodoDate = (e) => {
-    setTodoDate(e.target.value);
-  };
+  // let handletodoName = (e) => {
+  //   setTodoName(e.target.value);
+  // };
+  // let handletodoDate = (e) => {
+  //   setTodoDate(e.target.value);
+  // };
+
   let handleAddClick = () => {
-    if (!todoName || !todoDate) {
+    let name=todoName.current.value;
+    let date=todoDate.current.value;
+
+    if (!name || !date) {
       alert("Please enter both a Todo and a Date.");
       return;
     }
     // call the Parent Component onClick Handler
-    onAddButtonClick(todoName, todoDate);
+    onAddButtonClick(name,date);
     // empty the boxes
-    setTodoName("");
-    setTodoDate("");
+    // setTodoName("");
+    // setTodoDate("");
+
+    todoName.current.value="";
+    todoDate.current.value="";
   };
 
   return (
@@ -34,16 +46,18 @@ function Input({ onAddButtonClick }) {
             type="text"
             className={styles["inputBox"]}
             placeholder="Enter Todo here"
-            value={todoName}
-            onChange={handletodoName}
+            // value={todoName}
+            ref={todoName}
+            // onChange={handletodoName}
           />
         </div>
         <div className="col-4">
           <input
             type="date"
             className={styles["inputBox"]}
-            value={todoDate}
-            onChange={handletodoDate}
+            // value={todoDate}
+            ref={todoDate}
+            // onChange={handletodoDate}
           />
         </div>
         <div className="col-2">

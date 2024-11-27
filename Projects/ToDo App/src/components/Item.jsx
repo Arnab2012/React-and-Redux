@@ -6,7 +6,7 @@ function Item({ Items, onDeleteButtonClick }) {
     <div className={styles.itemContainer}>
       <div className="container">
         {Items.map((item) => (
-          <div className="row myRow" key={item}>
+          <div className="row myRow" key={item.todoName}>
             <div className="col-6">{item.todoName}</div>
             <div className="col-4">{item.todoDate}</div>
             <div className="col-2">
