@@ -2,8 +2,11 @@ import { useState } from "react";
 import styles from "./Input.module.css";
 import { MdAddCircle } from "react-icons/md";
 import { useRef } from "react";
+import { useContext } from "react";
+import { ItemContext } from "../store/ItemStore";
 
-function Input({ onAddButtonClick }) {
+// while we are using Context API in ItemStore Component so here we are not receiving props
+function Input() {
   // here the two useState will track the todoName and todoDate entered by the user
   // let [todoName, setTodoName] = useState("");
   // let [todoDate, setTodoDate] = useState("");
@@ -20,6 +23,10 @@ function Input({ onAddButtonClick }) {
   //   setTodoDate(e.target.value);
   // };
 
+  // here we are using the ItemStore component
+  // getting the addNewItem from Context object from ItemStore
+  const {addNewItem}=useContext(ItemContext);
+
   let handleAddClick = () => {
     let name=todoName.current.value;
     let date=todoDate.current.value;
@@ -29,7 +36,10 @@ function Input({ onAddButtonClick }) {
       return;
     }
     // call the Parent Component onClick Handler
-    onAddButtonClick(name,date);
+    // onAddButtonClick(name,date);
+
+    // call the function from Context
+    addNewItem(name,date);
     // empty the boxes
     // setTodoName("");
     // setTodoDate("");
@@ -37,7 +47,7 @@ function Input({ onAddButtonClick }) {
     todoName.current.value="";
     todoDate.current.value="";
   };
-
+  
   return (
     <div className="container text-center">
       <div className="row myRow">

@@ -7,6 +7,7 @@ import "./App.css";
 import Item from "./components/Item";
 import { useState } from "react";
 import EmptyMessage from "./components/EmptyMessage";
+import { ItemContext } from "./store/ItemStore";
 
 function App() {
   // let todoItems = [
@@ -19,22 +20,35 @@ function App() {
   let [todoItems,setTodoItems]=useState([]);
 
   // when the add button is clicked add new item and pass to Item component
-  let handleAddButtonClick=(todoName,todoDate)=>{
+  let addNewItem=(todoName,todoDate)=>{
     setTodoItems([...todoItems,{todoName,todoDate}]);
   }
 
   // when the delete button is clicked remove the item and pass to Item component
-  let handleDeleteButtonClick=(todoName,todoDate)=>{
+  let deleteItem=(todoName,todoDate)=>{
     setTodoItems(todoItems.filter((i)=> !(i.todoName === todoName && i.todoDate === todoDate)));
   }
+
   return (
+    // using Context API here
+    // we are passing values as object todoItems [],and two methods addNewItem and deleteItem
+    <ItemContext.Provider value={{todoItems,addNewItem,deleteItem}}>
+      
     <center className="todoContainer">
       <AppName></AppName>
-      {/* first we pass a onClick event handler to Input Component */}
-      <Input onAddButtonClick={handleAddButtonClick}></Input>
-      <EmptyMessage Items={todoItems}></EmptyMessage>
-      <Item Items={todoItems} onDeleteButtonClick={handleDeleteButtonClick}></Item>
+
+      {/* here we are passing as prop */}
+
+      {/* <Input onAddButtonClick={handleAddButtonClick}></Input> */}
+      {/* <EmptyMessage Items={todoItems}></EmptyMessage> */}
+      {/* <Item Items={todoItems} onDeleteButtonClick={handleDeleteButtonClick}></Item> */}
+
+      {/* here we are using from (Context Provider) ItemStore component */}
+      <Input/>
+      <EmptyMessage/>
+      <Item/>
     </center>
+    </ItemContext.Provider>
   );
 }
 
