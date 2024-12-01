@@ -1,4 +1,6 @@
-function Sidebar({selectedTab,setSelectedTab}) {
+import { TbSpherePlus } from "react-icons/tb";
+
+function Sidebar({ selectedTab, setSelectedTab }) {
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar"
@@ -11,20 +13,38 @@ function Sidebar({selectedTab,setSelectedTab}) {
         <svg className="bi pe-none me-2" width="40" height="32">
           <use xlinkHref="#bootstrap"></use>
         </svg>
-        <span className="fs-4">Sidebar</span>
+        <span className="fs-4">
+          SocialSphere
+          <TbSpherePlus />
+        </span>
       </a>
       <hr />
       <ul className="nav nav-pills flex-column mb-auto">
-        <li onClick={()=>setSelectedTab("Home")}>
-          <a href="#" className={`nav-link text-white ${selectedTab== 'Home' && 'active'}`} aria-current="page">
+        <li onClick={() => setSelectedTab("Home")}>
+          <a
+            href="#"
+            className={`nav-link text-white ${
+              selectedTab == "Home" && "active"
+            }`}
+            aria-current="page"
+          >
             <svg className="bi pe-none me-2" width="16" height="16">
               <use xlinkHref="#home"></use>
             </svg>
             Home
           </a>
         </li>
-        <li onClick={()=>{setSelectedTab("Create Post")}}>
-          <a href="#" className={`nav-link text-white ${selectedTab== 'Create Post' && 'active'}`}>
+        <li
+          onClick={() => {
+            setSelectedTab("Create Post");
+          }}
+        >
+          <a
+            href="#"
+            className={`nav-link text-white ${
+              selectedTab == "Create Post" && "active"
+            }`}
+          >
             <svg className="bi pe-none me-2" width="16" height="16">
               <use xlinkHref="#speedometer2"></use>
             </svg>
