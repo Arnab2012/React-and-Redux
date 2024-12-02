@@ -42,7 +42,11 @@
   margin-left: 10px;
   margin-right: 10px;
 }
-
 .myComment{
   margin: 10px;
+}
+
+/* for loading spinner */
+.spinner{
+  margin: 10% 0;
 }

@@ -5,6 +5,7 @@ import { createContext } from "react";
 export const PostListContext = createContext({
   postList: [],
   addPost: () => {},
+  addPosts: () => {},
   deletePost: () => {},
   addReactions: () => {},
   addComment: () => {},
@@ -16,6 +17,8 @@ const postListReducer = (currentPostList, action) => {
   if (action.type === "ADD_POST") {
     // handling addPost
     newPostList = [action.payload, ...currentPostList];
+  } else if (action.type === "ADD_INITIAL_POST") {
+    newPostList = action.payload.posts;
   } else if (action.type === "DELETE_POST") {
     // delete the post
     newPostList = currentPostList.filter(
@@ -42,7 +45,8 @@ const PostListProvider = ({ children }) => {
   // using useReducer() here
   const [postList, dispatchPostList] = useReducer(
     postListReducer,
-    defaultPostList
+    // defaultPostList
+    []
   );
 
   // add, delete and other post functions
@@ -63,6 +67,17 @@ const PostListProvider = ({ children }) => {
     };
     // now we will dispatch the action object to the reducer
     dispatchPostList(addPostAction);
+  };
+  const addPosts = (posts) => {
+    // creating action object
+    const addPostsAction = {
+      type: "ADD_INITIAL_POST",
+      payload: {
+        posts,
+      },
+    };
+    // now we will dispatch the action object to the reducer
+    dispatchPostList(addPostsAction);
   };
   const deletePost = (id) => {
     // creating action object
@@ -101,7 +116,14 @@ const PostListProvider = ({ children }) => {
   // wrapping up all the childrens inside PostList.provider
   return (
     <PostListContext.Provider
-      value={{ postList, addPost, deletePost, addReactions, addComment }}
+      value={{
+        postList,
+        addPost,
+        addPosts,
+        deletePost,
+        addReactions,
+        addComment,
+      }}
     >
       {children}
     </PostListContext.Provider>
