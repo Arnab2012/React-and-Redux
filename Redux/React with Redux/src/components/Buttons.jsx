@@ -33,6 +33,11 @@ const Buttons = () => {
     inputElement.current.value = "";
   };
 
+  const handlePrivacy = () => {
+    // dispatching action with type
+    dispatch({ type: "PRIVACY" });
+  };
+
   return (
     <>
       <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
@@ -68,6 +73,17 @@ const Buttons = () => {
           Subtract
         </button>
       </div>
+      
+      <div className="d-grid gap-2 d-sm-flex justify-content-sm-center rowMargin">
+        <button
+          type="button"
+          className="btn btn-warning btn-lg px-4"
+          onClick={handlePrivacy}
+        >
+          Privacy Toggle
+        </button>
+      </div>
+      
     </>
   );
 };
