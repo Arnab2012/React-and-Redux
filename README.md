@@ -1,6 +1,6 @@
 # React and Redux Repository
 
-This repository is a collection of sample code snippets and projects demonstrating the implementation of **React** and **Redux** concepts. It serves as a learning resource for developers looking to build and manage dynamic user interfaces with state management in modern web applications.
+This repository is a collection of sample code snippets and projects demonstrating the implementation of **React** and **Redux** concepts.
 
 ## Features
 
