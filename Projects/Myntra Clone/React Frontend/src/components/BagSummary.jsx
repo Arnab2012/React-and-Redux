@@ -1,22 +1,37 @@
+import { useSelector } from "react-redux";
+
 const BagSummary = () => {
-  const bagSumary = {
-    totalItem: 3,
-    totalMRP: 2000,
-    totalDiscount: 299,
-    finalPayment: 1701,
-  };
+  const CONVENIENCE_FEES=99;
+  const bagItemIds = useSelector((store) => store.bag);
+  const items = useSelector((store) => store.items);
+
+  const finalItems = items.filter((item) => {
+    const itemIndex = bagItemIds.indexOf(item.id);
+    return itemIndex >= 0;
+  });
+
+  let totalItem = bagItemIds.length;
+  let totalMRP = 0;
+  let totalDiscount = 0;
+
+  finalItems.forEach(bagItem => {
+    totalMRP += bagItem.original_price;
+    totalDiscount += bagItem.original_price - bagItem.current_price;
+  });
+
+  let finalPayment = totalMRP - totalDiscount + CONVENIENCE_FEES;
   return (
     <div className="bag-summary">
       <div className="bag-details-container">
-        <div className="price-header">PRICE DETAILS ({bagSumary.totalItem} Items) </div>
+        <div className="price-header">PRICE DETAILS ({totalItem} Items) </div>
         <div className="price-item">
           <span className="price-item-tag">Total MRP</span>
-          <span className="price-item-value">₹{bagSumary.totalMRP}</span>
+          <span className="price-item-value">₹{totalMRP}</span>
         </div>
         <div className="price-item">
           <span className="price-item-tag">Discount on MRP</span>
           <span className="price-item-value priceDetail-base-discount">
-            -₹{bagSumary.totalDiscount}
+            -₹{totalDiscount}
           </span>
         </div>
         <div className="price-item">
@@ -26,7 +41,7 @@ const BagSummary = () => {
         <hr />
         <div className="price-footer">
           <span className="price-item-tag">Total Amount</span>
-          <span className="price-item-value">₹{bagSumary.finalPayment}</span>
+          <span className="price-item-value">₹{finalPayment}</span>
         </div>
       </div>
       <button className="btn-place-order">
