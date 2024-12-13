@@ -21,7 +21,6 @@ function displayBagSummary() {
 
   let finalPayment = totalMRP - totalDiscount + CONVENIENCE_FEES;
   
-
   bagSummaryElement.innerHTML = `
     <div class="bag-details-container">
     <div class="price-header">PRICE DETAILS (${totalItem} Items) </div>
