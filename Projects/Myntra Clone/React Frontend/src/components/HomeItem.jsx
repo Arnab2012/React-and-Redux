@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { bagAction } from "../store/bagSlice";
+import { BsBagCheckFill } from "react-icons/bs";
+import { MdDeleteForever } from "react-icons/md";
 
 const HomeItem = ({ item }) => {
   const bagItems = useSelector((store) => store.bag);
@@ -32,6 +34,7 @@ const HomeItem = ({ item }) => {
           onClick={handleRemoveFromBag}
         >
           Remove from Bag
+          <MdDeleteForever className="removeFromBag"/>
         </button>
       ) : (
         <button
@@ -39,6 +42,7 @@ const HomeItem = ({ item }) => {
           onClick={handleAddToBag}
         >
           Add to Bag
+          <BsBagCheckFill className="addToBag"/>
         </button>
       )}
     </div>

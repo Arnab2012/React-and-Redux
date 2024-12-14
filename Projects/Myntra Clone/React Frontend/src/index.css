@@ -380,6 +380,13 @@ a.action_container:link {
   cursor: pointer;
 }
 
-.spinner{
+/* my CSS */
+.spinner {
   margin: 10% 0;
+}
+.addToBag {
+  margin: 0 5%;
+}
+.removeFromBag {
+  margin: 0 5%;
 }
