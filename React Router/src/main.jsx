@@ -7,7 +7,7 @@ import CreatePost from "./components/CreatePost.jsx";
 import PostList from "./components/PostList.jsx";
 
 // for mapping Router Provider
-const router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     // here we are using React Layouts so that for PostList and Create Post the common parts will come
     path: "/",
