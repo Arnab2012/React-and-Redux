@@ -36,7 +36,3 @@ To use or modify the code in this repository, follow these steps:
 Contributions to this repository are welcome! If you have improvements or new examples, feel free to submit a pull request.
 
 ---
-
-## License
-
-This repository is open-source and free to use under the [MIT License](LICENSE).
